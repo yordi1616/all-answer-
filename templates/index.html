@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="am">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>የዊኪፔዲያ ፍለጋ</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f4f7;
+            color: #333;
+            margin: 0;
+            padding: 40px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+        }
+        .container {
+            max-width: 700px;
+            width: 100%;
+            background-color: #fff;
+            padding: 30px;
+            border-radius: 12px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+        }
+        h1 {
+            text-align: center;
+            color: #1a569b;
+            margin-bottom: 25px;
+        }
+        .search-form {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 25px;
+        }
+        .search-form input[type="text"] {
+            flex-grow: 1;
+            padding: 12px;
+            border: 1px solid #ccc;
+            border-radius: 8px;
+            font-size: 16px;
+        }
+        .search-form button {
+            background-color: #1a569b;
+            color: white;
+            border: none;
+            padding: 12px 20px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 16px;
+            font-weight: bold;
+            transition: background-color 0.3s;
+        }
+        .search-form button:hover {
+            background-color: #15457a;
+        }
+        .result-box {
+            margin-top: 25px;
+            padding: 20px;
+            background-color: #e9f0f9;
+            border-radius: 8px;
+            font-size: 1em;
+            line-height: 1.6;
+        }
+        .result-box h2 {
+            margin-top: 0;
+            color: #000;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>የዊኪፔዲያ ፍለጋ</h1>
+        <form method="POST" class="search-form">
+            <input type="text" name="query" placeholder="የምትፈልገውን ቃል ጻፍ" value="{{ search_term if search_term is not none else '' }}">
+            <button type="submit">ፈልግ</button>
+        </form>
+
+        {% if summary %}
+        <div class="result-box">
+            <h2>{{ search_term }}</h2>
+            <p>{{ summary }}</p>
+        </div>
+        {% endif %}
+    </div>
+</body>
+</html>
